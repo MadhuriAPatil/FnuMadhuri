@@ -1,0 +1,29 @@
+# Package Sorting Function
+
+##  Objective
+This project implements a function to classify packages in Thoughtful’s robotic automation factory.  
+Packages are sorted into stacks based on their **volume, dimensions, and mass**.
+
+##  Rules
+- A package is **bulky** if:
+  - Its volume (Width × Height × Length) is **≥ 1,000,000 cm³**, OR  
+  - Any dimension is **≥ 150 cm**.
+- A package is **heavy** if:
+  - Its mass is **≥ 20 kg**.
+
+### Stacks
+- **STANDARD** → not bulky and not heavy  
+- **SPECIAL** → bulky **or** heavy  
+- **REJECTED** → both bulky **and** heavy  
+
+##  Implementation
+The function `sort(width, height, length, mass)` takes the package dimensions (in cm) and mass (in kg), and returns the stack name.
+
+```python
+def sort(width: float, height: float, length: float, mass: float) -> str:
+    volume = width * height * length
+    bulky = volume >= 1_000_000 or max(width, height, length) >= 150
+    heavy = mass >= 20
+    return "REJECTED" if (bulky and heavy) else ("SPECIAL" if (bulky or heavy) else "STANDARD")
+
+Run main.py file using command: python main.py
