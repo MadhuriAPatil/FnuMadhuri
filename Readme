@@ -26,4 +26,4 @@ def sort(width: float, height: float, length: float, mass: float) -> str:
     heavy = mass >= 20
     return "REJECTED" if (bulky and heavy) else ("SPECIAL" if (bulky or heavy) else "STANDARD")
 
-Run main.py file using command: python main.py
+Run main.py file using command: python3 main.py
